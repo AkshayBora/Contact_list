@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>
+            <%= locals.title %>
+        </title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
+            crossorigin="anonymous"/>
+        <!-- Our css should be below all the other style so that we can override it -->
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+
+    <body>
+        <h1 id='page-heading'>
+            <i class="fas fa-address-book"></i>
+            My Contacts List
+        </h1>
+
+        <div id='Contact-container'>
+            <ul id='list'>
+                <% for (let i of contact_list) { %>  
+                    <li>
+                        <p><%= i.name %></p>
+                        <p><%= i.phone %></p>
+                        <div class="delete-button">
+                            <!-- _id is taken form DB -->
+                            <a href="/delete-contact/?id=<%= i._id %>">
+                                <i class="fas fa-window-close"></i>
+                            </a>
+                        </div>
+                    </li>    
+                <% } %>
+            </ul>
+        </div>
+
+        <form id="contact-form" action="/create-contact" method="POST">
+            <input type="text" name="name" placeholder="Enter Name" required>
+            <input type="number" name="phone" placeholder="Enter Phone" required>
+
+            <button type="submit">Add</button>
+        </form>
+
+        <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
