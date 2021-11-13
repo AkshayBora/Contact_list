@@ -125,7 +125,7 @@ app.get('/delete-contact', function(req , res){
 
 });
 
-
+// checking the server
 app.listen(port , function(err){
     if (err){
         console.log('Error is running the server', err);
